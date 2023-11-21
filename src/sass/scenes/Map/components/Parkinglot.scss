@@ -1,0 +1,17 @@
+$primary: #0a0944;
+$secondary : #424f5e;
+$green-color : #00eb75;
+$red-color : #c05f4e;
+.vertical{
+    border-left: 5px white dashed;
+    border-right: 5px white dashed;
+    height: 100px;
+    width: 200px;
+    margin: 10px;
+    &-text{
+        text-align: center;
+        width: 100%;
+        font-weight: 500;
+        color: white;
+    }
+}

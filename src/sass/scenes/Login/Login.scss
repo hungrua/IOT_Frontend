@@ -1,0 +1,90 @@
+$primary: #0a0944;
+$secondary : #424f5e;
+$green-color : #00eb75;
+$red-color : #c05f4e;
+
+.app-contain {
+    height: 100vh;
+    display: flex;
+    color: white;
+    width: 100%;
+    position: relative;
+
+    &-main {
+        width: 70%;
+        // height: 65%;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .appAside {
+            width: 45%;
+            background-color: $green-color;
+            position: relative;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            img {
+                height: 208px;
+                width: 313px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .appForm {
+            width: 55%;
+            background-color: $primary;
+            padding: 50px;
+            overflow: auto;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            h2{
+                text-align: center;
+            }
+            .inputContainer{
+                margin: 20px 0 ;
+                .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+                    // color: white;
+                    width: 100%;
+                    .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
+                        color: white;
+                    }
+                    label{
+                        color: $green-color;
+                        font-size: 1.2em;
+                    }
+                    .css-v4u5dn-MuiInputBase-root-MuiInput-root{
+                        input{
+                            color: white;
+                            padding: 10px 0;
+                        }
+                        &::before{
+                            border-bottom: 2px solid white;
+                        }
+                        &::after{
+                            border-bottom: 2px solid $green-color;
+                        }
+                        
+                    }
+                }
+                button{
+                    width: 100%;
+                    background-color: #00eb75;
+                }
+                &-text{
+                    padding: 0 10px;
+                }
+                &-link{
+                    &:hover{
+                        cursor: pointer;
+                        color: $green-color;
+                        text-decoration:underline;
+                    }
+                }
+            }
+        }
+    }
+}

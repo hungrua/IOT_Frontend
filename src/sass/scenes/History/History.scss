@@ -1,0 +1,92 @@
+$gray-color : #7a798b;
+$primary: #0a0944;
+$green-color : #00eb75;
+.history{
+    padding: 30px;
+    color: white;
+    width: 100%;
+    height: 77.8vh;
+    .info{
+        padding-bottom: 20px;
+        .license{
+            font-size: 1.5rem;
+            select{
+                margin: 0 10px;
+                padding: 0 10px;
+            }
+        }
+        .month{
+            input{
+                color-scheme: dark;
+                color: white;
+                background-color: $primary;
+                border: 2px solid $green-color;
+                padding:5px 20px;
+                border-radius: 20px;
+            }
+                
+        }
+    }
+    .tableContainer{
+        height: 100%;
+        border-radius: 20px;
+        background-color: $primary;
+        table{
+            thead{
+                tr{
+                    th{
+                        padding: 10px;
+                        border: none;
+                        color:white;
+                        text-align: center;
+                    }
+                    .no{
+                        width:5%;
+                    }
+                    .position{
+                        width: 5%;
+                    }
+                    .timeIn,.timeOut{
+                        width: 30%;
+                    }
+                    .duration{
+                        width: 15%;
+                    }
+                    .fee{
+                        width: 15%;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        padding:10px;
+                        color: white;
+                        border: none;
+                        border-top: 2px solid $green-color;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        nav{
+            padding:10px 0;
+            display: flex;
+            justify-content: center;
+            ul{
+                li{
+                    button{
+                        color: white;
+                    }
+                    .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+                        background-color: #00eb75 !important;
+                    }
+                    div{
+                        color: white;
+                    }
+                }
+            }
+        }
+
+    }
+}

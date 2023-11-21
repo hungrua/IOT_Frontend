@@ -1,0 +1,94 @@
+$primary: #0a0944;
+$secondary : #424f5e;
+$green-color : #00eb75;
+$red-color : #c05f4e;
+
+header {
+    width: 100%;
+    position: fixed;
+    border-bottom:  4px solid $green-color;
+    font-size: 16px;
+    background-color: $primary;
+    padding: 5px 20px;
+    color: white;
+    box-sizing: border-box;
+    .main-contain {
+        .contain {
+            &-sm {
+                padding: 10px;
+                &-brand {
+                    .logo {
+                        img {
+                            height: 50px;
+                        }
+                    }
+
+                    .name {
+                        padding: 0 10px;
+                        align-self: flex-end;
+                        font-size: 2em;
+                    }
+                }
+
+                &-dateTime {
+                    padding: 0 20px;
+                    word-spacing: 5px;
+                    font-size: 1.2em;
+                }
+
+                &-navigation {
+                    border-radius: 36px;
+                    border: 2px solid #605C5C;
+                    a{
+                        color: white;
+                        text-decoration: none;
+                        .dashboardLink {
+                            padding: 10px 20px;
+                            border-radius: 36px;
+    
+                            &-text {
+                                padding: 0 20px;
+                            }
+                        }
+    
+                        .historyLink {
+                            left: 50%;
+                            padding: 10px 20px;
+                            border-radius: 36px;
+    
+                            &-text {
+                                padding: 0 20px;
+                            }
+    
+                            // background-color: #00eb75;
+                        }
+    
+                        .mapLink {
+                            left: 100%;
+                            padding: 10px 20px;
+                            border-radius: 36px;
+    
+                            &-text {
+                                padding: 0 10px;
+                            }
+                        }
+                    }
+                }
+
+                &-user {
+                    svg {
+                        font-size: 2.2em;
+                    }
+                }
+            }
+        
+        }
+        .first{
+            width: 40%;
+        }
+        .second{
+            width: 60%;
+        }
+
+    }
+}

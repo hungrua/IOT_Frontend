@@ -8,21 +8,21 @@ import { uid } from 'uid';
 import { onValue, ref } from 'firebase/database';
 import Header from '../../Layout/Header';
 import Footer from '../../Layout/Footer';
-const Map = () => {
+const Map = (props) => {
+    const {choose} = props
     const [slotStatus, setSlotStatus] = useState([])
     useEffect(() => {
         onValue(ref(db), snapshot => {
             const data = snapshot.val();
             if (data !== null) {
-                console.log(data.Parking.Slot1)
                 setSlotStatus(data.Parking)
             }
         })
     }, [])
     return (
-        <div className="map">
+        <div className="map" style={{width:"100vw",height:"100vh"}}>
             <div className='headerContainer' style={{ height: "80px", marginBottom: "4px" }}>
-                <Header></Header>
+                <Header name={choose}></Header>
             </div>
             <div className="top d-flex justify-content-between">
                 <div className='barrier left'></div>
@@ -90,9 +90,7 @@ const Map = () => {
                     </div>
                 </div>
             </div>
-            <div className='footerContainer' style={{ height: "80px" }}>
-                <Footer></Footer>
-            </div>
+
         </div>
     )
 }

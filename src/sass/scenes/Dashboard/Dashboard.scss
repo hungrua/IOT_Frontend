@@ -26,6 +26,15 @@ $red-color : #c05f4e;
                 font-size: 1.2em;
                 padding-left: 50px;
                 padding-top: 20px;
+                select{
+                    background-color: transparent;
+                    color: white;
+                    margin: 0 10px;
+                    border: none;
+                    option{
+                        color: black;
+                    }
+                }
             }
             border-radius: 30px;
             background-color: $primary;

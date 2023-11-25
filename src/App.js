@@ -7,38 +7,46 @@ import Map from './scenes/Map/Map.js';
 import History from './scenes/History/History.js';
 import Dashboard from './scenes/Dashboard/Dashboard.js';
 import Login from './scenes/Login/Login.js';
+import AdminUsersTable from './scenes/Admin/AdminUserTable.js';
+import AdminCategories from './scenes/Admin/AdminManageUserTable.js';
+import AdminCategoryDetail from './scenes/Admin/UserDetails.js';
 function App() {
-  const [display, setDisplay] = useState(false)
   const [user, setUser] = useState(null)
   useEffect(() => {
-    const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+    let loggedInUser = sessionStorage.getItem('user');
+    if(loggedInUser==undefined) setUser(null)
+    else loggedInUser = JSON.parse(sessionStorage.getItem('user'))
     console.log(loggedInUser)
     if (loggedInUser) {
       setUser(loggedInUser);
     }
   }, []);
+  const handleLogin = (loggedInUser) => {
+    setUser(loggedInUser);
+    sessionStorage.setItem('user', JSON.stringify(loggedInUser));
+  };
   return (
     <div className="App" style={{ padding: 0, margin: 0, backgroundColor: "#424f5e" }}>
-      {user !== null ? (<div className='con1'>
-          <React.Fragment>
-            <Suspense fallback={<div>loading...</div>}>
-              <main className='mainContainer d-flex' >
-                <Routes>
-                  <Route path='/history' element={<History></History>}></Route>
-                  <Route path='/map' element={<Map></Map>}></Route>
-                  <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
-                </Routes>
-              </main>
-            </Suspense>
-          </React.Fragment>
-      </div>) : (<Login></Login>)
-      }
-      {/* <div className='con2' style={{ height: "100vh", display: "flex", width: "100vw" }}>
-        <Routes>
-          <Route path='/' element={<Login></Login>}></Route>
-        </Routes>
-      </div> */}
+      <div className='con1'>
+        <main className='mainContainer d-flex' >
+          <Routes>
+            {user!==null?(<>
+              <Route path='/history' element={<History choose="history"></History>}></Route>
+              <Route path='/map' element={<Map choose="map"></Map>}></Route>
+              <Route path='/dashboard' element={<Dashboard choose="dashboard"></Dashboard>}></Route>
+              {
+                user.role==='admin' && (<>
+                  <Route path='/admin/users' element={<AdminCategories />} />
+                  <Route path='/admin/users/:username' element={<AdminCategoryDetail />} />
+              </>)
+              }
 
+            </>):(<>
+                <Route path='/' element={<Login onLogin ={handleLogin} ></Login>}></Route>             
+            </>)}
+          </Routes>
+        </main>
+      </div> :
 
     </div>
   );

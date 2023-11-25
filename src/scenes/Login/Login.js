@@ -3,11 +3,14 @@ import { Link ,useNavigate} from "react-router-dom";
 import cartoon from '../../assets/pic/cartoon.png'
 import { Button, TextField } from '@mui/material';
 import 'bootstrap/dist/css/bootstrap.css';
-import { useState } from 'react';
-const Login = (props) => {
-    const {setDisplay} = props;
+import { useEffect, useState } from 'react';
+import {IP,port} from '../../constraint'
+const Login = ({onLogin}) => {
     const [status, setStatus] = useState(true)
     const navigate = useNavigate()
+    useEffect(()=>{
+        sessionStorage.clear()
+    },[])
     const login =()=>{
         let userName = document.getElementById("userName").value
         let password = document.getElementById("password").value
@@ -17,19 +20,42 @@ const Login = (props) => {
                 "Content-Type": "application/json"
             }
         }
-        fetch("http://localhost:8081/login?username="+userName+"&password="+password,options)
+        console.log(IP,port)
+        fetch("http://"+IP+":"+port+"/login?username="+userName+"&password="+password,options)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                sessionStorage.setItem("user",JSON.stringify(data));
-                navigate("/dashboard")
-                // window.location.href="http://localhost:3000/dashboard"
+                onLogin(data)
+                if(data.role==='user') navigate("/dashboard")
+                else navigate("/admin/users")
                 console.log(1)
                 }
             )
             .then(()=>{
             })   
-            .catch(err => alert("Tài khoản hoặc mật khẩu không đúng"))
+            .catch(err => console.log(err))
+    }
+    const signUp = ()=>{
+        let userData ={
+            username : document.getElementById("userName").value,
+            password : document.getElementById("password").value,
+            email : document.getElementById("email").value,
+            fullName : document.getElementById("fullName").value,
+            role: "user"
+        }
+        let options={
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        }
+        fetch("http://localhost:9999/user",options)
+            .then(response => response.json())
+            .then(data=>{
+                alert("Đăng ký tài khoản thành công vui lòng quay lại đăng nhập")
+                setStatus(true)
+            })
     }
     return (
         <div className="app-contain">
@@ -89,7 +115,9 @@ const Login = (props) => {
 
                     </div>
                     <div className='inputContainer'>
-                        <Button variant='contained' color="success">SIGN UP</Button>
+                        <Button variant='contained' color="success"
+                        onClick={signUp}
+                        >SIGN UP</Button>
                     </div>
                 </div>}
 

@@ -78,7 +78,7 @@ const Header = (props) => {
                     <div className="contain-sm">
                         <div className='contain-sm-user' onClick={()=>{
                             sessionStorage.clear()
-                            navigate("/")
+                            window.location.href ="http://localhost:3000/"
                         }}>
                             <FontAwesomeIcon icon={faArrowRightFromBracket}></FontAwesomeIcon>
                         </div>

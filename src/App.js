@@ -42,7 +42,7 @@ function App() {
               }
 
             </>):(<>
-                <Route path='/' element={<Login onLogin ={handleLogin} ></Login>}></Route>             
+                <Route path='/*' element={<Login onLogin ={handleLogin} ></Login>}></Route>             
             </>)}
           </Routes>
         </main>

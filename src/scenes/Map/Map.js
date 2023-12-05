@@ -61,7 +61,7 @@ const Map = (props) => {
                             <img src={direction} style={{ transform: "rotate(270deg)" }}></img>
                         </div>
                     </div>
-                    <div className='bottom-way-entrance'>ENTRANCE</div>
+                    <div className='bottom-way-exit'>EXIT</div>
                 </div>
                 <div className='bottom-way-middle'>
                     <div className='bottom-way-direction d-flex justify-content-center'>
@@ -76,7 +76,8 @@ const Map = (props) => {
                             <img src={direction} style={{ transform: "rotate(90deg)" }}></img>
                         </div>
                     </div>
-                    <div className='bottom-way-exit'>EXIT</div>
+        
+                    <div className='bottom-way-entrance'>ENTRANCE</div>
                 </div>
                 <div className='bottom-parking'>
                     <div className='bottom-parking left'>

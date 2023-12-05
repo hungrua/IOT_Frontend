@@ -9,18 +9,10 @@ import Dashboard from './scenes/Dashboard/Dashboard.js';
 import Login from './scenes/Login/Login.js';
 import AdminCategories from './scenes/Admin/AdminManageUserTable.js';
 import AdminCategoryDetail from './scenes/Admin/UserDetails.js';
-const defaulUser = []
+const defaulUser = null
 function App() {
   const [user, setUser] = useState(null)
-  // useEffect(() => {
-  //   let loggedInUser = localStorage.getItem('user');
-  //   if(loggedInUser==undefined) setUser(null)
-  //   else loggedInUser = JSON.parse(localStorage.getItem('user'))
-  //   console.log(loggedInUser)
-  //   if (loggedInUser) {
-  //     setUser(loggedInUser);
-  //   }
-  // }, []);
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("user"));
     if (items) {

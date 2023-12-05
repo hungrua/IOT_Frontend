@@ -11,7 +11,7 @@ import { IP, port } from '../../constraint.js'
 const Dashboard = (props) => {
     const { choose } = props
     const [occupiedSlot, setOccupiedSlot] = useState(0)
-    const [totalSlot, setTotalSlot] = useState(9)
+    const [totalSlot, setTotalSlot] = useState(3)
     const [licensePlate, setLicensePlate] = useState([]);
     const [condition, setCondition] = useState(() => {
         const currentDate = new Date();
@@ -31,12 +31,14 @@ const Dashboard = (props) => {
         onValue(ref(db), snapshot => {
             const data = snapshot.val();
             if (data !== null) {
+                console.log(data.Parking)
                 let count = 0
-                for (let key in data) {
-                    if (data.hasOwnProperty(key)) {
-                        if (data[key] == 1) count += 1
+                for (let key in data.Parking) {
+                    if (data.Parking.hasOwnProperty(key)) {
+                        if (data.Parking[key] == 1) count += 1
                     }
                 }
+                console.log(count)
                 setOccupiedSlot(count)
             }
         })
@@ -46,7 +48,7 @@ const Dashboard = (props) => {
     }, []);
     const fetchLicensePlates = () => {
 
-        fetch("http://" + IP + ":" + port + "/cars?username="+JSON.parse(sessionStorage.getItem("user")).username)
+        fetch("http://" + IP + ":" + port + "/cars?username="+JSON.parse(localStorage.getItem("user")).username)
             .then(response => response.json())
             .then(data => {
 
@@ -108,7 +110,7 @@ const Dashboard = (props) => {
                             <div className='title-text'>Car information</div>
 
                         </div>
-                        <div className='info'>Owner : {JSON.parse(sessionStorage.getItem("user")).fullName}</div>
+                        <div className='info'>Owner : {JSON.parse(localStorage.getItem("user")).fullName}</div>
                         <div className='info'>License plate :
                             <select
                                 onChange={(e) => {
@@ -175,11 +177,11 @@ const Dashboard = (props) => {
                         <div className='parkingInfo d-flex'>
                             <div className='totalSlot'>
                                 <div className='totalSlot-text'>Total duration</div>
-                                <div className='totalSlot-number'>{totalDuration} hours</div>
+                                <div className='totalSlot-number'>{totalDuration.toFixed(2)} hours</div>
                             </div>
                             <div className='totalSlot'>
                                 <div className='totalSlot-text'>Total fee</div>
-                                <div className='totalSlot-number'>{totalFee} VNĐ</div>
+                                <div className='totalSlot-number'>{totalFee.toFixed(2)} VNĐ</div>
                             </div>
                         </div>
                     </div>

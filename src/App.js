@@ -7,42 +7,54 @@ import Map from './scenes/Map/Map.js';
 import History from './scenes/History/History.js';
 import Dashboard from './scenes/Dashboard/Dashboard.js';
 import Login from './scenes/Login/Login.js';
-import AdminUsersTable from './scenes/Admin/AdminUserTable.js';
 import AdminCategories from './scenes/Admin/AdminManageUserTable.js';
 import AdminCategoryDetail from './scenes/Admin/UserDetails.js';
+const defaulUser = []
 function App() {
   const [user, setUser] = useState(null)
+  // useEffect(() => {
+  //   let loggedInUser = localStorage.getItem('user');
+  //   if(loggedInUser==undefined) setUser(null)
+  //   else loggedInUser = JSON.parse(localStorage.getItem('user'))
+  //   console.log(loggedInUser)
+  //   if (loggedInUser) {
+  //     setUser(loggedInUser);
+  //   }
+  // }, []);
   useEffect(() => {
-    let loggedInUser = sessionStorage.getItem('user');
-    if(loggedInUser==undefined) setUser(null)
-    else loggedInUser = JSON.parse(sessionStorage.getItem('user'))
-    console.log(loggedInUser)
-    if (loggedInUser) {
-      setUser(loggedInUser);
+    const items = JSON.parse(localStorage.getItem("user"));
+    if (items) {
+      setUser(items);
     }
   }, []);
+
+  useEffect(() => {
+    if (user !== defaulUser) { // Note we're checking *object identity* here
+      localStorage.setItem("items", JSON.stringify(user));
+    }
+  }, [user]);
   const handleLogin = (loggedInUser) => {
     setUser(loggedInUser);
-    sessionStorage.setItem('user', JSON.stringify(loggedInUser));
+    localStorage.setItem('user', JSON.stringify(loggedInUser));
   };
   return (
     <div className="App" style={{ padding: 0, margin: 0, backgroundColor: "#424f5e" }}>
       <div className='con1'>
         <main className='mainContainer d-flex' >
           <Routes>
-            {user!==null?(<>
+            {user !== null ? (<>
               <Route path='/history' element={<History choose="history"></History>}></Route>
               <Route path='/map' element={<Map choose="map"></Map>}></Route>
               <Route path='/dashboard' element={<Dashboard choose="dashboard"></Dashboard>}></Route>
               {
-                user.role==='admin' && (<>
+                user.role === 'admin' && (<>
                   <Route path='/admin/users' element={<AdminCategories />} />
                   <Route path='/admin/users/:username' element={<AdminCategoryDetail />} />
-              </>)
+                </>)
               }
 
-            </>):(<>
-                <Route path='/*' element={<Login onLogin ={handleLogin} ></Login>}></Route>             
+            </>) : (<>
+              <Route path='/*' element={<Login onLogin={handleLogin} ></Login>}></Route>
             </>)}
           </Routes>
         </main>

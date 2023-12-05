@@ -28,17 +28,17 @@ const Map = (props) => {
                 <div className='barrier left'></div>
                 <div className='top-parking'>
                     <div className='top-parking-slot d-flex'>
-                        <Parkinglot parkingStatus={slotStatus.Slot1 === 0 ? false : true}></Parkinglot>
+                        <Parkinglot parkingStatus={slotStatus.Slot1 === 0 ? false : true} slotNumber={1}></Parkinglot>
                     </div>
                 </div>
                 <div className='top-parking'>
                     <div className='top-parking-slot d-flex'>
-                        <Parkinglot parkingStatus={slotStatus.Slot2 === 0 ? false : true}></Parkinglot>
+                        <Parkinglot parkingStatus={slotStatus.Slot2 === 0 ? false : true} slotNumber={2}></Parkinglot>
                     </div>
                 </div>
                 <div className='top-parking'>
                     <div className='top-parking-slot d-flex'>
-                        <Parkinglot parkingStatus={slotStatus.Slot3 === 0 ? false : true}></Parkinglot>
+                        <Parkinglot parkingStatus={slotStatus.Slot3 === 0 ? false : true} slotNumber={3}></Parkinglot>
                     </div>
                 </div>
                 <div className='barrier right'></div>
@@ -46,13 +46,13 @@ const Map = (props) => {
             <div className='bottom d-flex justify-content-between'>
                 <div className='bottom-parking'>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"} slotNumber={4} ></Parkinglot>
                     </div>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"}  slotNumber={5} ></Parkinglot>
                     </div>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"}  slotNumber={6}></Parkinglot>
                     </div>
                 </div>
                 <div className='bottom-way'>
@@ -80,13 +80,13 @@ const Map = (props) => {
                 </div>
                 <div className='bottom-parking'>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"}  slotNumber={7} ></Parkinglot>
                     </div>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"}  slotNumber={8} ></Parkinglot>
                     </div>
                     <div className='bottom-parking left'>
-                        <Parkinglot parkingStatus={false}></Parkinglot>
+                        <Parkinglot parkingStatus={"none"}  slotNumber={9} ></Parkinglot>
                     </div>
                 </div>
             </div>

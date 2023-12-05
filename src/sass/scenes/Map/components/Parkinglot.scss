@@ -3,15 +3,20 @@ $secondary : #424f5e;
 $green-color : #00eb75;
 $red-color : #c05f4e;
 .vertical{
-    border-left: 5px white dashed;
-    border-right: 5px white dashed;
-    height: 100px;
-    width: 200px;
+    height: 150px;
+    width: 250px;
     margin: 10px;
+    border-radius: 5px;
     &-text{
         text-align: center;
         width: 100%;
         font-weight: 500;
         color: white;
+    }
+    .slotContainer{
+        border: 5px solid white;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
     }
 }

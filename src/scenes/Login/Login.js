@@ -8,9 +8,6 @@ import {IP,port} from '../../constraint'
 const Login = ({onLogin}) => {
     const [status, setStatus] = useState(true)
     const navigate = useNavigate()
-    useEffect(()=>{
-        sessionStorage.clear()
-    },[])
     const login =()=>{
         let userName = document.getElementById("userName").value
         let password = document.getElementById("password").value

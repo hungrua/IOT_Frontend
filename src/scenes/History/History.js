@@ -33,7 +33,7 @@ const History = (props) => {
 
     const fetchLicensePlates = () => {
 
-        fetch("http://" + IP + ":" + port + "/cars?username=" + JSON.parse(sessionStorage.getItem("user")).username)
+        fetch("http://" + IP + ":" + port + "/cars?username=" + JSON.parse(localStorage.getItem("user")).username)
             .then(response => response.json())
             .then(data => {
                 const licensePlates = data.map(item => item.licensePlate);

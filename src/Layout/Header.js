@@ -38,7 +38,7 @@ const Header = (props) => {
                     <div className='contain-sm-dateTime'>
                             {today}
                     </div>
-                    <div className="contain-sm">
+                    {name!=null && <div className="contain-sm">
                         <nav className='contain-sm-navigation d-flex align-items-center'>
                             <Link to="/dashboard">
                                 <div className='dashboardLink d-flex align-items-center'
@@ -74,10 +74,10 @@ const Header = (props) => {
                                 </div>
                             </Link>
                         </nav>
-                    </div>
+                    </div>}
                     <div className="contain-sm">
                         <div className='contain-sm-user' onClick={()=>{
-                            sessionStorage.clear()
+                            localStorage.clear()
                             window.location.href ="http://localhost:3000/"
                         }}>
                             <FontAwesomeIcon icon={faArrowRightFromBracket}></FontAwesomeIcon>

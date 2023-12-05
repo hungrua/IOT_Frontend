@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import {IP,port} from '../../constraint'
+import Header from "../../Layout/Header";
 const AdminCategories = () => {
     const [users, setUsers] = useState([])
     const [search, setSearch] = useState('')
@@ -38,17 +39,17 @@ const AdminCategories = () => {
 
     return (
         <>
-            {/* <Header /> */}
-            <div className="container-fluid" style={{ marginTop: "20px",height:"100vh" }}>
+            <div className="container-fluid" style={{ height:"100vh",backgroundColor:"white",overflow:"hidden",padding:"0" }}>
+                <Header name={null}></Header>
                 <div className="table-header">
-                    <div className="input-group mb-3">
+                    <div className="input-group mb-3 mt-3">
                         <input type="text" className="form-control" placeholder="Tìm kiếm người dùng" onChange={(e) => setSearch(e.target.value)} />
                         <div className="input-group-append">
                             <button className="btn btn-outline-secondary" type="button">Search</button>
                         </div>
                     </div>
                 </div>
-                <Table className="table table-striped table-bordered text-center">
+                <Table className="table table-striped table-bordered text-center" style={{padding:"10px"}}>
                     <thead className="table-light">
                         <tr className="text-center">
                             <th>STT</th>
@@ -84,7 +85,6 @@ const AdminCategories = () => {
                                 ))}
 
                     </tbody>
-
                 </Table>
             </div>
         </>
